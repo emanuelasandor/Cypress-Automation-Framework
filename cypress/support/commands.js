@@ -19,7 +19,12 @@
 //
 // -- This is a dual command --
 // Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
+Cypress.Commands.add("selectProduct", productName => {
+    cy.get('.fixed_wrapper .prdocutname').each(($el, index, $list) =>{
+        if($el.text().includes(productName))
+            cy.wrap($el).click() //wrap yieald - s when a command "yields" an element, it means the command provides access to a specific HTML element in the web page you're testing
+     });
+})
+
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
